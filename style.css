@@ -2012,3 +2012,154 @@ section {
         padding: 24px;
     }
 }
+
+/* ==========================================================================
+   LAYER 01.5: LAB & EXPERIMENTAL SPACE
+   ========================================================================== */
+.lab-section {
+    background-color: var(--bg-deep-black);
+    padding: 100px 0;
+    border-top: 1px solid var(--border-slate);
+    border-bottom: 1px solid var(--border-slate);
+    position: relative;
+    overflow: hidden;
+}
+
+.lab-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.lab-image-container {
+    width: 100%;
+}
+
+.lab-img-frame {
+    position: relative;
+    border: 1px solid var(--border-slate);
+    border-radius: 4px;
+    padding: 10px;
+    background-color: rgba(11, 15, 25, 0.45);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+}
+
+.lab-img-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-cyan), transparent);
+}
+
+.frame-tag {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--color-cyan);
+    margin-bottom: 8px;
+    letter-spacing: 0.1em;
+}
+
+.lab-workspace-img {
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: block;
+    filter: brightness(0.85) contrast(1.05);
+    transition: var(--transition-smooth);
+}
+
+.lab-workspace-img:hover {
+    filter: brightness(1) contrast(1.1);
+}
+
+/* Scanner sweep animation overlay on the lab image */
+.scanner-sweep-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to bottom, 
+        transparent 45%, 
+        rgba(0, 240, 255, 0.15) 50%, 
+        rgba(0, 240, 255, 0.02) 53%, 
+        transparent 60%
+    );
+    background-size: 100% 200%;
+    animation: image-sweep 6s infinite linear;
+}
+
+@keyframes image-sweep {
+    0% { background-position: 0 -200%; }
+    100% { background-position: 0 200%; }
+}
+
+.lab-info {
+    max-width: 540px;
+}
+
+.lab-title {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    font-weight: 800;
+}
+
+.lab-desc {
+    color: var(--color-text-body);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.lab-descHighlight {
+    color: var(--color-white);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    font-weight: 400;
+    border-left: 2px solid var(--color-cyan);
+    padding-left: 16px;
+}
+
+.lab-meta {
+    display: flex;
+    gap: 30px;
+    border-top: 1px solid var(--border-slate);
+    padding-top: 24px;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meta-item .lbl {
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+}
+
+.meta-item .val {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Lab responsive styling in media queries */
+@media (max-width: 992px) {
+    .lab-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .lab-info {
+        max-width: 100%;
+    }
+}
