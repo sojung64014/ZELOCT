@@ -3,6 +3,7 @@
  * ----------------------------------------------------
  * High-end visual calculations, vector grid scaling,
  * custom telemetry logic, and live engine simulation.
+ * Optimized for both Single Page and Multi-Page architectures.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFaceMeshSimulator();
     initDashboardTabs();
     initZeloctEngine();
+    initActiveNavHighlight();
 });
 
 /* ==========================================================================
@@ -17,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
    ========================================================================== */
 function initCursorTracker() {
     const tracker = document.querySelector('.custom-cursor-tracker');
-    const coordVal = tracker.querySelector('.coord-val');
-
     if (!tracker) return;
+    
+    const coordVal = tracker.querySelector('.coord-val');
 
     // Show cursor tracker on mouse move
     document.addEventListener('mousemove', (e) => {
@@ -54,11 +56,13 @@ function initCursorTracker() {
 }
 
 /* ==========================================================================
-   2. INTERACTIVE FACE MESH SIMULATOR
+   2. INTERACTIVE FACE MESH SIMULATOR (Index Page Only)
    ========================================================================== */
 function initFaceMeshSimulator() {
     const symmetrySlider = document.getElementById('slider-symmetry');
     const ratioSlider = document.getElementById('slider-ratio');
+    
+    if (!symmetrySlider || !ratioSlider) return; // Exit if not on home page
     
     const faceContour = document.getElementById('face-contour');
     const eyebrowLeft = document.getElementById('eyebrow-left');
@@ -100,19 +104,19 @@ function initFaceMeshSimulator() {
         const absSym = Math.abs(symVal);
         let asymPercentage = (absSym / 30 * 12.5).toFixed(3);
         if (absSym === 0) {
-            telAsym.textContent = "0.000% (OPTIMAL)";
+            telAsym.textContent = "0.000% (매우 대칭적 - 완벽)";
             telAsym.className = "tel-value cyan-txt";
         } else if (absSym < 10) {
-            telAsym.textContent = `${asymPercentage}% (SYMMETRICAL)`;
+            telAsym.textContent = `${asymPercentage}% (균형적 범주)`;
             telAsym.className = "tel-value cyan-txt";
         } else {
-            telAsym.textContent = `${asymPercentage}% (ASYMMETRICAL Skew)`;
+            telAsym.textContent = `${asymPercentage}% (비대칭 편차 감지)`;
             telAsym.className = "tel-value text-muted";
         }
         
         // Calculate length ratio status
         if (lenRatio === 1) {
-            telPhi.textContent = "1 : 1.618 (GOLDEN PHI)";
+            telPhi.textContent = "1 : 1.618 (황금 비율 PHI)";
         } else {
             const currentRatioVal = (1.618 * lenRatio).toFixed(3);
             telPhi.textContent = `1 : ${currentRatioVal}`;
@@ -134,29 +138,33 @@ function initFaceMeshSimulator() {
             const dy = (pt.y - 200) * lenRatio + 200;
             return `${pt.x + dx},${dy}`;
         }).join(' ');
-        faceContour.setAttribute('points', newContour);
+        if (faceContour) faceContour.setAttribute('points', newContour);
         
         // Eyebrows
         const newEbL = baseCoords.eyebrowL.map(pt => `${pt.x - symVal * 0.4},${(pt.y - 200) * lenRatio + 200}`).join(' ');
         const newEbR = baseCoords.eyebrowR.map(pt => `${pt.x + symVal * 0.4},${(pt.y - 200) * lenRatio + 200}`).join(' ');
-        eyebrowLeft.setAttribute('points', newEbL);
-        eyebrowRight.setAttribute('points', newEbR);
+        if (eyebrowLeft) eyebrowLeft.setAttribute('points', newEbL);
+        if (eyebrowRight) eyebrowRight.setAttribute('points', newEbR);
         
         // Eyes
         const newEyeL = baseCoords.eyeL.map(pt => `${pt.x - symVal * 0.4},${(pt.y - 200) * lenRatio + 200}`).join(' ');
         const newEyeR = baseCoords.eyeR.map(pt => `${pt.x + symVal * 0.4},${(pt.y - 200) * lenRatio + 200}`).join(' ');
-        eyeLeft.setAttribute('points', newEyeL);
-        eyeRight.setAttribute('points', newEyeR);
+        if (eyeLeft) eyeLeft.setAttribute('points', newEyeL);
+        if (eyeRight) eyeRight.setAttribute('points', newEyeR);
         
         // Pupils
         const pupilL_x = 162 - symVal * 0.4;
         const pupilL_y = (175 - 200) * lenRatio + 200;
         const pupilR_x = 238 + symVal * 0.4;
         const pupilR_y = (175 - 200) * lenRatio + 200;
-        pupilLeft.setAttribute('cx', pupilL_x);
-        pupilLeft.setAttribute('cy', pupilL_y);
-        pupilRight.setAttribute('cx', pupilR_x);
-        pupilRight.setAttribute('cy', pupilR_y);
+        if (pupilLeft) {
+            pupilLeft.setAttribute('cx', pupilL_x);
+            pupilLeft.setAttribute('cy', pupilL_y);
+        }
+        if (pupilRight) {
+            pupilRight.setAttribute('cx', pupilR_x);
+            pupilRight.setAttribute('cy', pupilR_y);
+        }
         
         // Nose
         const newNose = baseCoords.nose.map((pt, idx) => {
@@ -166,7 +174,7 @@ function initFaceMeshSimulator() {
             if (idx === 4) dx = symVal * 0.2;
             return `${pt.x + dx},${(pt.y - 200) * lenRatio + 200}`;
         }).join(' ');
-        noseBridge.setAttribute('points', newNose);
+        if (noseBridge) noseBridge.setAttribute('points', newNose);
         
         // Mouth
         const newMouth = baseCoords.mouth.map((pt, idx) => {
@@ -176,21 +184,21 @@ function initFaceMeshSimulator() {
             if (idx === 2) dx = symVal * 0.3;
             return `${pt.x + dx},${(pt.y - 200) * lenRatio + 200}`;
         }).join(' ');
-        mouth.setAttribute('points', newMouth);
+        if (mouth) mouth.setAttribute('points', newMouth);
         
         // Update Interactive Nodes (Circles) positions
         const nodePositions = {
-            "NOSE_CENTER": { x: 200, y: (240 - 200) * lenRatio + 200 },
-            "TRICHION": { x: 200, y: (80 - 200) * lenRatio + 200 },
-            "MENTON": { x: 200, y: (340 - 200) * lenRatio + 200 },
-            "PUPIL_L": { x: pupilL_x, y: pupilL_y },
-            "PUPIL_R": { x: pupilR_x, y: pupilR_y },
-            "FRONT_L": { x: 130 - symVal * 0.5, y: (100 - 200) * lenRatio + 200 },
-            "FRONT_R": { x: 270 + symVal * 0.5, y: (100 - 200) * lenRatio + 200 },
-            "ZYGION_L": { x: 70 - symVal * 0.5, y: (230 - 200) * lenRatio + 200 },
-            "ZYGION_R": { x: 330 + symVal * 0.5, y: (230 - 200) * lenRatio + 200 },
-            "CHILION_L": { x: 160 - symVal * 0.3, y: (285 - 200) * lenRatio + 200 },
-            "CHILION_R": { x: 240 + symVal * 0.3, y: (285 - 200) * lenRatio + 200 }
+            "코 중앙": { x: 200, y: (240 - 200) * lenRatio + 200 },
+            "이마 끝": { x: 200, y: (80 - 200) * lenRatio + 200 },
+            "턱 끝": { x: 200, y: (340 - 200) * lenRatio + 200 },
+            "왼쪽 눈동자": { x: pupilL_x, y: pupilL_y },
+            "오른쪽 눈동자": { x: pupilR_x, y: pupilR_y },
+            "이마 왼쪽": { x: 130 - symVal * 0.5, y: (100 - 200) * lenRatio + 200 },
+            "이마 오른쪽": { x: 270 + symVal * 0.5, y: (100 - 200) * lenRatio + 200 },
+            "왼쪽 광대": { x: 70 - symVal * 0.5, y: (230 - 200) * lenRatio + 200 },
+            "오른쪽 광대": { x: 330 + symVal * 0.5, y: (230 - 200) * lenRatio + 200 },
+            "입꼬리 왼쪽": { x: 160 - symVal * 0.3, y: (285 - 200) * lenRatio + 200 },
+            "입꼬리 오른쪽": { x: 240 + symVal * 0.3, y: (285 - 200) * lenRatio + 200 }
         };
         
         nodes.forEach(node => {
@@ -258,17 +266,18 @@ function initFaceMeshSimulator() {
         });
         node.addEventListener('mouseleave', () => {
             node.style.stroke = 'none';
-            // revert back to generic focus
-            telNode.textContent = "Awaiting hover node data...";
+            telNode.textContent = "가까운 노드에 마우스를 올리세요";
         });
     });
 }
 
 /* ==========================================================================
-   3. SYSTEM DASHBOARD TABS
+   3. SYSTEM DASHBOARD TABS (Dashboard Page Only)
    ========================================================================== */
 function initDashboardTabs() {
     const tabButtons = document.querySelectorAll('.tab-btn');
+    if (tabButtons.length === 0) return; // Exit if not on dashboard page
+    
     const tabContents = document.querySelectorAll('.tab-content');
     const activeFileName = document.getElementById('active-file-name');
 
@@ -289,7 +298,7 @@ function initDashboardTabs() {
             // Update file path visualizer
             activeFileName.textContent = fileName;
             
-            // Re-animate visual charts if needed (adds micro-interaction delight!)
+            // Re-animate visual charts if needed
             if (target === 'entry-03') {
                 const fills = targetContent.querySelectorAll('.bar-fill');
                 fills.forEach(fill => {
@@ -305,10 +314,12 @@ function initDashboardTabs() {
 }
 
 /* ==========================================================================
-   4. ZELOCT SECURE SCAN ENGINE SIMULATION
+   4. ZELOCT SECURE SCAN ENGINE SIMULATION (Contact Page Only)
    ========================================================================== */
 function initZeloctEngine() {
     const form = document.getElementById('zeloct-engine-form');
+    if (!form) return; // Exit if not on contact page
+    
     const submitBtn = document.getElementById('submit-engine-btn');
     const btnText = submitBtn.querySelector('.submit-btn-text');
     const btnScanner = submitBtn.querySelector('.submit-btn-scanner');
@@ -328,9 +339,9 @@ function initZeloctEngine() {
             if (fileInput.files.length > 0) {
                 fileNameDisplay.textContent = fileInput.files[0].name;
                 fileNameDisplay.style.color = '#00F0FF';
-                appendLog(`[UPLOAD] Detected local resource mesh: ${fileInput.files[0].name}`);
+                appendLog(`[업로드] 안면 로컬 소스 확인됨: ${fileInput.files[0].name}`);
             } else {
-                fileNameDisplay.textContent = "No file selected";
+                fileNameDisplay.textContent = "선택된 파일 없음";
                 fileNameDisplay.style.color = '#64748b';
             }
         });
@@ -345,7 +356,6 @@ function initZeloctEngine() {
         } else if (type === 'success') {
             p.classList.add('cyan-txt');
         } else if (type === 'warning') {
-            p.className = 'log-line text-yellow'; // yellow accent
             p.style.color = '#f59e0b';
         }
         
@@ -354,83 +364,81 @@ function initZeloctEngine() {
         logContainer.scrollTop = logContainer.scrollHeight;
     }
 
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const clientId = document.getElementById('client-id').value;
-            const targetData = document.getElementById('target-data').value;
-            const settings = document.getElementById('spec-settings').value;
-            
-            // Start scan logic
-            submitBtn.disabled = true;
-            submitBtn.style.cursor = 'wait';
-            btnText.textContent = "[RUNNING DEEP SCAN...]";
-            btnScanner.style.animation = 'laser-sweep 2s infinite linear';
-            
-            // Clear terminal log screen
-            logContainer.innerHTML = '';
-            appendLog(`[SYSTEM] Initializing Zeloct Engine core...`, 'system');
-            
-            const scanLogs = [
-                { text: `[SYSTEM] Terminal online. Client identified as: "${clientId.toUpperCase()}"`, delay: 300, type: 'standard' },
-                { text: `[SCAN] Loading payload source: "${targetData}"`, delay: 700, type: 'standard' },
-                { text: `[SCAN] Running Bilateral Facemesh grid mapping...`, delay: 1100, type: 'warning' },
-                { text: `[COMPUTE] Executing matrix optimization parameters (Metric: ${settings.toUpperCase()})`, delay: 1500, type: 'standard' },
-                { text: `[COMPUTE] Scanned 120,490 vertex nodes. Symmetrical parity: 99.88%`, delay: 1900, type: 'success' },
-                { text: `[REPORT] Formulating high-fidelity radar classification mapping...`, delay: 2200, type: 'standard' },
-                { text: `[SUCCESS] Secure Visual Decoded Profile Package ready for export.`, delay: 2500, type: 'success' }
-            ];
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const clientId = document.getElementById('client-id').value;
+        const targetData = document.getElementById('target-data') ? document.getElementById('target-data').value : "내부 사진 파일";
+        const settings = document.getElementById('spec-settings').value;
+        
+        // Start scan logic
+        submitBtn.disabled = true;
+        submitBtn.style.cursor = 'wait';
+        btnText.textContent = "[정밀 분석 스캔 가동 중...]";
+        btnScanner.style.animation = 'laser-sweep 2s infinite linear';
+        
+        // Clear terminal log screen
+        logContainer.innerHTML = '';
+        appendLog(`[시스템] ZELOCT AI 분석 엔진 로딩 중...`, 'system');
+        
+        const scanLogs = [
+            { text: `[시스템] 터미널 보안 활성화. 신청자 식별 토큰: "${clientId.toUpperCase()}"`, delay: 300, type: 'standard' },
+            { text: `[스캔] 분석 대상 데이터 소스 경로 지정: "${targetData}"`, delay: 700, type: 'standard' },
+            { text: `[스캔] 안면 외곽 및 주요 대칭 격자(Bilateral Grid) 캘리브레이션 실행...`, delay: 1100, type: 'warning' },
+            { text: `[연산] 대칭 분석 및 적합률 변환 처리 시작 (설정: ${settings.toUpperCase()})`, delay: 1500, type: 'standard' },
+            { text: `[연산] 안면 120,490개 좌표계 추출 완료. 대칭 지표: 99.88%`, delay: 1900, type: 'success' },
+            { text: `[매핑] 다차원 포지셔닝 및 비주얼 가이드 생성 완료.`, delay: 2200, type: 'standard' },
+            { text: `[완료] ZELOCT AI 안면 아키텍처 종합 리포트 패키지가 안전하게 완성되었습니다.`, delay: 2500, type: 'success' }
+        ];
 
-            scanLogs.forEach(log => {
-                setTimeout(() => {
-                    appendLog(log.text, log.type);
-                }, log.delay);
-            });
-
-            // Complete Scan and Open Modal Report
+        scanLogs.forEach(log => {
             setTimeout(() => {
-                // Reset button status
-                submitBtn.disabled = false;
-                submitBtn.style.cursor = 'pointer';
-                btnText.textContent = "[SUBMIT DATA]";
-                btnScanner.style.animation = 'none';
-                
-                // Set Modal Data
-                repClientId.textContent = clientId.toUpperCase();
-                const now = new Date();
-                repScannedTime.textContent = now.toISOString().replace('T', ' ').substring(0, 19);
-                
-                // Adjust radar score dimensions based on settings dropdown
-                if (settings === 'high-precision') {
-                    // Maximum perfection symmetry
-                    repPolygon.setAttribute('points', '100,28 172,100 100,172 28,100');
-                    document.querySelector('.score-card:nth-child(1) .score-num').childNodes[0].textContent = "98.92";
-                    document.querySelector('.score-card:nth-child(2) .score-num').childNodes[0].textContent = "0.004";
-                    document.querySelector('.score-card:nth-child(3) .score-num').textContent = "HIGH-END CLASSIC";
-                    document.getElementById('report-text').textContent = "HIGH-PRECISION 매트릭스 측정 결과, 대상은 오차 0.004mm 범위 내에서 정밀한 대칭과 구조적 균형을 이룩한 비주얼 구조를 갖추고 있습니다. 이는 무결점의 시각적 카테고리에 할당되며, 하이엔드 테크니컬 아키텍처에 완벽하게 플러그인(Plug-in) 가능합니다.";
-                } else if (settings === 'structural-only') {
-                    // Standard structural focus
-                    repPolygon.setAttribute('points', '100,45 168,100 100,165 42,100');
-                    document.querySelector('.score-card:nth-child(1) .score-num').childNodes[0].textContent = "91.24";
-                    document.querySelector('.score-card:nth-child(2) .score-num').childNodes[0].textContent = "0.021";
-                    document.querySelector('.score-card:nth-child(3) .score-num').textContent = "NEO-MODERNIST";
-                    document.getElementById('report-text').textContent = "STRUCTURAL SYMMETRY 중심 연산 결과, 대상은 현대적이고 날카로운 비대칭 균형을 포괄하는 기하학적 배치를 띠고 있습니다. 모호한 정서에서 완전히 해방된 건조하고 세련된 시각적 좌표축을 매핑하여 가치 규격화를 증명합니다.";
-                } else {
-                    // Default values
-                    repPolygon.setAttribute('points', '100,35 162,100 100,165 38,100');
-                    document.querySelector('.score-card:nth-child(1) .score-num').childNodes[0].textContent = "94.85";
-                    document.querySelector('.score-card:nth-child(2) .score-num').childNodes[0].textContent = "0.012";
-                    document.querySelector('.score-card:nth-child(3) .score-num').textContent = "NEO-CLASSICAL";
-                    document.getElementById('report-text').textContent = "스캔된 이미지의 페이스 데이터 연산 결과, 대상은 오차 범위 0.012mm 수준의 완벽에 가까운 비주얼 아키텍처 대칭성을 지니고 있습니다. 이는 이성적이고 구조화된 감각을 구현하며 비즈니스 및 브랜드 포지셔닝에 있어 신뢰도 높고 고도화된 정형의 논리적 가치를 매핑할 수 있음을 증명합니다.";
-                }
-                
-                // Show modal with a slick fade-in
-                modal.style.display = 'flex';
-                
-            }, 2700);
+                appendLog(log.text, log.type);
+            }, log.delay);
         });
-    }
+
+        // Complete Scan and Open Modal Report
+        setTimeout(() => {
+            // Reset button status
+            submitBtn.disabled = false;
+            submitBtn.style.cursor = 'pointer';
+            btnText.textContent = "[분석 시작하기]";
+            btnScanner.style.animation = 'none';
+            
+            // Set Modal Data
+            repClientId.textContent = clientId.toUpperCase();
+            const now = new Date();
+            repScannedTime.textContent = now.toISOString().replace('T', ' ').substring(0, 19);
+            
+            // Adjust radar score dimensions based on settings dropdown
+            if (settings === 'high-precision') {
+                // Maximum perfection symmetry
+                repPolygon.setAttribute('points', '100,28 172,100 100,172 28,100');
+                document.querySelector('.score-card:nth-child(1) .score-num').childNodes[0].textContent = "98.92";
+                document.querySelector('.score-card:nth-child(2) .score-num').childNodes[0].textContent = "0.004";
+                document.querySelector('.score-card:nth-child(3) .score-num').textContent = "초정밀 균형형";
+                document.getElementById('report-text').textContent = "HIGH-PRECISION 초정밀 매트릭스 스캔 결과, 대상은 오차 0.004mm 범위 내에서 거의 완벽한 수평 대칭과 구조적 비례를 달성하고 있습니다. 이는 시각적으로 극도의 안정감과 고급스러움을 연출하며, 정돈되고 신뢰성 높은 인상의 기준을 보여줍니다.";
+            } else if (settings === 'structural-only') {
+                // Standard structural focus
+                repPolygon.setAttribute('points', '100,45 168,100 100,165 42,100');
+                document.querySelector('.score-card:nth-child(1) .score-num').childNodes[0].textContent = "91.24";
+                document.querySelector('.score-card:nth-child(2) .score-num').childNodes[0].textContent = "0.021";
+                document.querySelector('.score-card:nth-child(3) .score-num').textContent = "입체 구조형";
+                document.getElementById('report-text').textContent = "외곽선 입체 균형 측정 결과, 좌우의 물리적 대칭성보다 안면 골격의 세련된 조화도가 도드라집니다. 중안부와 이마의 수직 대비율이 모던하고 감각적인 인상을 형성하며, 개성 있고 스타일리시한 포지셔닝에 최적화된 결과입니다.";
+            } else {
+                // Default values
+                repPolygon.setAttribute('points', '100,35 162,100 100,165 38,100');
+                document.querySelector('.score-card:nth-child(1) .score-num').childNodes[0].textContent = "94.85";
+                document.querySelector('.score-card:nth-child(2) .score-num').childNodes[0].textContent = "0.012";
+                document.querySelector('.score-card:nth-child(3) .score-num').textContent = "클래식 조화형";
+                document.getElementById('report-text').textContent = "안면 정밀 스캔 결과, 대상은 오차 범위 0.012mm 수준의 최상위 대칭 조화를 보여줍니다. 이마 끝부터 턱 끝까지의 균형도가 매우 뛰어나며, 유행을 타지 않는 정석적이고 신뢰도 높은 아우라를 구현하기에 완벽한 미적 균형을 입증합니다.";
+            }
+            
+            // Show modal with a slick fade-in
+            modal.style.display = 'flex';
+            
+        }, 2700);
+    });
 
     if (closeModalBtn) {
         closeModalBtn.addEventListener('click', () => {
@@ -449,16 +457,15 @@ function initZeloctEngine() {
     if (exportBtn) {
         exportBtn.addEventListener('click', () => {
             const originalText = exportBtn.innerHTML;
-            exportBtn.innerHTML = `<span><i class="fa-solid fa-spinner fa-spin"></i> SECURING SYSTEM PAYLOAD...</span>`;
+            exportBtn.innerHTML = `<span><i class="fa-solid fa-spinner fa-spin"></i> 분석 리포트 패키지 생성 및 보안 암호화 중...</span>`;
             exportBtn.disabled = true;
             
             setTimeout(() => {
-                exportBtn.innerHTML = `<span><i class="fa-solid fa-check"></i> REPORT GENERATED SUCCESSFULLY</span>`;
-                appendLog(`[PDF] Export complete: ZELOCT_REPORT_${repClientId.textContent}_SECURED.pdf generated.`, 'success');
+                exportBtn.innerHTML = `<span><i class="fa-solid fa-check"></i> 암호화 리포트 생성 완료</span>`;
+                appendLog(`[다운로드] 암호화 리포트 패키지 다운로드 완료: ZELOCT_REPORT_${repClientId.textContent}_SECURED.pdf`, 'success');
                 
-                // Download dummy alert / log effect
                 setTimeout(() => {
-                    alert(`[ZELOCT SECURE VAULT] 리포트 파일 생성 및 암호화 다운로드가 시작되었습니다.`);
+                    alert(`[ZELOCT SECURE VAULT] 리포트 파일 생성 및 암호화 다운로드가 성공적으로 완료되었습니다.`);
                     exportBtn.innerHTML = originalText;
                     exportBtn.disabled = false;
                     modal.style.display = 'none';
@@ -466,4 +473,24 @@ function initZeloctEngine() {
             }, 1500);
         });
     }
+}
+
+/* ==========================================================================
+   5. ACTIVE NAVIGATION LINK HIGH-LIGHT (Multi-Page Helper)
+   ========================================================================== */
+function initActiveNavHighlight() {
+    const navItems = document.querySelectorAll('.nav-links .nav-item');
+    if (navItems.length === 0) return;
+
+    const currentPath = window.location.pathname;
+    const pageName = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        const href = item.getAttribute('href');
+        
+        if (pageName === href || (pageName === '' && href === 'index.html')) {
+            item.classList.add('active');
+        }
+    });
 }
