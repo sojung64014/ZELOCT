@@ -2163,3 +2163,451 @@ section {
         max-width: 100%;
     }
 }
+
+/* ==========================================================================
+   LIGHT MODE OVERRIDES (셀록트 배경 밝게 처리)
+   ========================================================================== */
+
+:root {
+    --bg-deep-black: #fafbfe;
+    --bg-dark-slate: #ffffff;
+    --border-slate: #e2e8f0;
+    --border-slate-glow: #cbd5e1;
+    
+    --color-white: #0f172a; /* 기존 white text -> 다크 슬레이트 텍스트 */
+    --color-cyan: #0284c7; /* 라이트 모드 가독성을 고려한 세련된 딥 스카이 블루 */
+    --color-cyan-glow: rgba(2, 132, 199, 0.2);
+    --color-text-muted: #64748b;
+    --color-text-body: #334155; /* 기존 연한 그레이 -> 어두운 그레이 */
+}
+
+/* Base resets & Background overrides */
+html, body {
+    background-color: var(--bg-deep-black) !important;
+    color: var(--color-text-body) !important;
+}
+
+/* Symmetrical Tech Grid Background */
+.tech-grid-overlay {
+    background-image: 
+        linear-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.12) 1px, transparent 1px) !important;
+}
+
+.tech-grid-overlay::after {
+    background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(250, 251, 254, 0.6) 80%) !important;
+}
+
+/* Interactive Cursor Coordinates Overlay */
+.custom-cursor-tracker .coord-val {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid var(--border-slate) !important;
+    color: var(--color-cyan) !important;
+}
+
+/* Header Overrides */
+.system-header {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-bottom: 1px solid var(--border-slate) !important;
+    backdrop-filter: blur(10px);
+}
+
+.logo-text, .nav-item:hover, .nav-item.active {
+    color: var(--color-white) !important;
+}
+
+.system-status-indicator {
+    background-color: rgba(2, 132, 199, 0.08) !important;
+    border: 1px solid rgba(2, 132, 199, 0.15) !important;
+    color: var(--color-cyan) !important;
+}
+
+/* Gradient text */
+.gradient-text {
+    background: linear-gradient(90deg, var(--color-white) 0%, var(--color-cyan) 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Visualizer Card (Hero & Contact) */
+.hero-visualizer-card {
+    background-color: rgba(255, 255, 255, 0.75) !important;
+    border: 1px solid var(--border-slate) !important;
+    box-shadow: 0 20px 40px rgba(148, 163, 184, 0.15) !important;
+}
+
+.card-header-bar {
+    background-color: rgba(241, 245, 249, 0.9) !important;
+    border-bottom: 1px solid var(--border-slate) !important;
+    color: #475569 !important;
+}
+
+.header-title-text, .header-status {
+    color: #475569 !important;
+}
+
+.telemetry-box {
+    background-color: rgba(241, 245, 249, 0.8) !important;
+    border: 1px solid var(--border-slate) !important;
+    color: #334155 !important;
+}
+
+.telemetry-row {
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+.tel-label {
+    color: #64748b !important;
+}
+
+.tel-value.white-txt {
+    color: #0f172a !important;
+}
+
+.interactive-sliders {
+    background-color: rgba(248, 250, 252, 0.9) !important;
+    border-top: 1px solid var(--border-slate) !important;
+    color: #475569 !important;
+}
+
+.slider-group label {
+    color: #64748b !important;
+}
+
+/* Buttons */
+.btn-secondary {
+    border: 1px solid var(--border-slate) !important;
+    color: #334155 !important;
+    background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.btn-secondary:hover {
+    background-color: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+}
+
+/* Lab & Book Images Frame */
+.lab-img-frame, .book-img-frame {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid var(--border-slate) !important;
+    box-shadow: 0 15px 30px rgba(148, 163, 184, 0.1) !important;
+}
+
+.frame-tag {
+    background-color: rgba(241, 245, 249, 0.9) !important;
+    border-right: 1px solid var(--border-slate) !important;
+    border-bottom: 1px solid var(--border-slate) !important;
+    color: #475569 !important;
+}
+
+/* Book Section Bullets */
+.highlight-bullet {
+    background-color: rgba(255, 255, 255, 0.6) !important;
+    border: 1px solid var(--border-slate) !important;
+}
+
+.highlight-bullet:hover {
+    border-color: var(--color-cyan) !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 10px 25px rgba(2, 132, 199, 0.05) !important;
+}
+
+.bullet-num {
+    background-color: rgba(2, 132, 199, 0.06) !important;
+    border-right: 1px solid var(--border-slate) !important;
+    color: var(--color-cyan) !important;
+}
+
+.bullet-body h5 {
+    color: #0f172a !important;
+}
+
+.bullet-body p {
+    color: #475569 !important;
+}
+
+/* Footer */
+.system-footer {
+    border-top: 1px solid var(--border-slate) !important;
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    color: #64748b !important;
+}
+
+/* Contact Page form panel */
+.contact-form-panel {
+    background-color: rgba(255, 255, 255, 0.75) !important;
+    border: 1px solid var(--border-slate) !important;
+    box-shadow: 0 20px 40px rgba(148, 163, 184, 0.15) !important;
+}
+
+.terminal-logs-box {
+    background-color: rgba(241, 245, 249, 0.8) !important;
+    border: 1px solid var(--border-slate) !important;
+}
+
+.terminal-header {
+    background-color: rgba(226, 232, 240, 0.9) !important;
+    border-bottom: 1px solid var(--border-slate) !important;
+    color: #475569 !important;
+}
+
+.term-title {
+    color: #475569 !important;
+}
+
+.terminal-body-text {
+    color: #334155 !important;
+}
+
+.input-wrapper {
+    background-color: rgba(248, 250, 252, 0.9) !important;
+    border: 1px solid var(--border-slate) !important;
+}
+
+.input-wrapper input {
+    color: #0f172a !important;
+}
+
+.input-wrapper input::placeholder {
+    color: #94a3b8 !important;
+}
+
+.select-wrapper select {
+    background-color: rgba(248, 250, 252, 0.9) !important;
+    border: 1px solid var(--border-slate) !important;
+    color: #0f172a !important;
+}
+
+.select-arrow {
+    color: #64748b !important;
+}
+
+.file-upload-btn {
+    border: 1px dashed var(--border-slate) !important;
+    background-color: rgba(248, 250, 252, 0.8) !important;
+    color: #475569 !important;
+}
+
+.file-upload-btn:hover {
+    border-color: var(--color-cyan) !important;
+    background-color: rgba(2, 132, 199, 0.04) !important;
+}
+
+/* Modal Report Overlay */
+.report-modal-content {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid var(--border-slate) !important;
+    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15) !important;
+}
+
+.report-header {
+    background-color: rgba(241, 245, 249, 0.95) !important;
+    border-bottom: 1px solid var(--border-slate) !important;
+    color: #0f172a !important;
+}
+
+.report-title {
+    color: #0f172a !important;
+}
+
+.close-report-btn {
+    color: #64748b !important;
+}
+
+.radar-box {
+    background-color: rgba(248, 250, 252, 0.9) !important;
+    border: 1px solid var(--border-slate) !important;
+}
+
+.report-meta-box {
+    background-color: rgba(241, 245, 249, 0.9) !important;
+    border: 1px solid var(--border-slate) !important;
+    color: #334155 !important;
+}
+
+.score-card {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid var(--border-slate) !important;
+}
+
+.score-label {
+    color: #64748b !important;
+}
+
+.score-num {
+    color: #0f172a !important;
+}
+
+.report-conclusion {
+    background-color: rgba(248, 250, 252, 0.9) !important;
+    border: 1px solid var(--border-slate) !important;
+    color: #334155 !important;
+}
+
+.report-conclusion h4 {
+    color: #0f172a !important;
+}
+
+/* Dashboard Editor Layout */
+.dashboard-tabs {
+    border-right: 1px solid var(--border-slate) !important;
+    background-color: rgba(248, 250, 252, 0.8) !important;
+}
+
+.tab-btn {
+    border-bottom: 1px solid var(--border-slate) !important;
+    color: #64748b !important;
+}
+
+.tab-btn:hover {
+    background-color: rgba(241, 245, 249, 0.9) !important;
+}
+
+.tab-btn.active {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    border-right: 1px solid transparent !important;
+}
+
+.dashboard-panel {
+    background-color: #ffffff !important;
+    border: 1px solid var(--border-slate) !important;
+    box-shadow: 0 15px 30px rgba(148, 163, 184, 0.1) !important;
+}
+
+.panel-header {
+    background-color: rgba(241, 245, 249, 0.95) !important;
+    border-bottom: 1px solid var(--border-slate) !important;
+    color: #475569 !important;
+}
+
+.file-path {
+    color: #475569 !important;
+}
+
+.code-editor-main {
+    background-color: #f8fafc !important;
+    border-right: 1px solid var(--border-slate) !important;
+}
+
+.line-numbers {
+    border-right: 1px solid rgba(226, 232, 240, 0.8) !important;
+    color: #94a3b8 !important;
+}
+
+.code-viewport pre code {
+    color: #334155 !important;
+}
+
+.json-key { color: #0284c7 !important; }
+.json-val { color: #0f766e !important; }
+.json-num { color: #b45309 !important; }
+
+.py-keyword { color: #0284c7 !important; }
+.py-def { color: #0f766e !important; }
+.py-comment { color: #94a3b8 !important; }
+
+.dashboard-preview-panel {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.preview-title {
+    border-bottom: 1px solid var(--border-slate) !important;
+    color: #475569 !important;
+}
+
+.node-graph-mini, .coordinate-map, .bar-chart-visualization {
+    background-color: rgba(248, 250, 252, 0.9) !important;
+    border: 1px solid var(--border-slate) !important;
+}
+
+.coordinate-map .axis-x, .coordinate-map .axis-y {
+    background-color: #cbd5e1 !important;
+}
+
+.quadrant-label {
+    color: #64748b !important;
+}
+
+.bar-track {
+    background-color: #e2e8f0 !important;
+}
+
+.bar-label {
+    color: #475569 !important;
+}
+
+.bar-val {
+    color: #334155 !important;
+}
+
+.preview-telemetry {
+    background-color: rgba(241, 245, 249, 0.9) !important;
+    border: 1px solid var(--border-slate) !important;
+    color: #475569 !important;
+}
+
+/* Insights Card Accordion Overrides */
+.insight-card {
+    background-color: rgba(255, 255, 255, 0.75) !important;
+    border: 1px solid var(--border-slate) !important;
+}
+
+.insight-card:hover {
+    border-color: var(--color-cyan) !important;
+    box-shadow: 0 10px 30px rgba(2, 132, 199, 0.08) !important;
+}
+
+.insight-title {
+    color: #0f172a !important;
+}
+
+.insight-summary {
+    color: #475569 !important;
+}
+
+.insight-meta-top {
+    color: #64748b !important;
+}
+
+.insight-badge {
+    background-color: rgba(2, 132, 199, 0.06) !important;
+    color: var(--color-cyan) !important;
+}
+
+.insight-reading-body {
+    border-top: 1px solid var(--border-slate) !important;
+    color: #334155 !important;
+}
+
+.insight-reading-body h6 {
+    color: #0f172a !important;
+}
+
+/* Services page stage elements */
+.service-stage-card {
+    background-color: rgba(255, 255, 255, 0.75) !important;
+    border: 1px solid var(--border-slate) !important;
+}
+
+.service-stage-card:hover {
+    border-color: var(--color-cyan) !important;
+    box-shadow: 0 15px 35px rgba(2, 132, 199, 0.08) !important;
+}
+
+.stage-header {
+    border-bottom: 1px solid var(--border-slate) !important;
+}
+
+.stage-title {
+    color: #0f172a !important;
+}
+
+.stage-body p {
+    color: #475569 !important;
+}
+
+.stage-badge {
+    background-color: rgba(2, 132, 199, 0.06) !important;
+    color: var(--color-cyan) !important;
+}
