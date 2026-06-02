@@ -2165,7 +2165,7 @@ section {
 }
 
 /* ==========================================================================
-   LIGHT MODE OVERRIDES (셀록트 배경 밝게 처리)
+   LIGHT MODE OVERRIDES (셀록트 배경 밝게 처리 및 가독성 개선)
    ========================================================================== */
 
 :root {
@@ -2179,6 +2179,18 @@ section {
     --color-cyan-glow: rgba(2, 132, 199, 0.2);
     --color-text-muted: #64748b;
     --color-text-body: #334155; /* 기존 연한 그레이 -> 어두운 그레이 */
+}
+
+/* 글로벌 타이포그래피 가독성 대대적 보정 */
+body, p, span, li, a, label, input, select {
+    line-height: 1.78 !important; /* 리얼 북/매거진처럼 넉넉한 1.78배 행간 */
+    letter-spacing: 0.02em !important; /* 약간의 자간 여유를 주어 가독성 제고 */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.38 !important;
+    letter-spacing: -0.01em !important;
+    margin-bottom: 0.6em !important;
 }
 
 /* Base resets & Background overrides */
@@ -2240,6 +2252,7 @@ html, body {
     background-color: rgba(241, 245, 249, 0.9) !important;
     border-bottom: 1px solid var(--border-slate) !important;
     color: #475569 !important;
+    padding: 12px 20px !important;
 }
 
 .header-title-text, .header-status {
@@ -2250,14 +2263,18 @@ html, body {
     background-color: rgba(241, 245, 249, 0.8) !important;
     border: 1px solid var(--border-slate) !important;
     color: #334155 !important;
+    padding: 16px 20px !important;
+    margin-bottom: 20px !important;
 }
 
 .telemetry-row {
     border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+    padding: 10px 0 !important; /* 넉넉한 텔레메트리 세로 패딩 */
 }
 
 .tel-label {
     color: #64748b !important;
+    margin-right: 12px !important;
 }
 
 .tel-value.white-txt {
@@ -2268,10 +2285,17 @@ html, body {
     background-color: rgba(248, 250, 252, 0.9) !important;
     border-top: 1px solid var(--border-slate) !important;
     color: #475569 !important;
+    padding: 20px !important;
+}
+
+.slider-group {
+    margin-bottom: 16px !important;
 }
 
 .slider-group label {
     color: #64748b !important;
+    margin-bottom: 8px !important;
+    display: inline-block !important;
 }
 
 /* Buttons */
@@ -2304,6 +2328,8 @@ html, body {
 .highlight-bullet {
     background-color: rgba(255, 255, 255, 0.6) !important;
     border: 1px solid var(--border-slate) !important;
+    margin-bottom: 24px !important; /* 리스트 간 간격 확실히 확보 */
+    padding: 24px !important;
 }
 
 .highlight-bullet:hover {
@@ -2316,14 +2342,22 @@ html, body {
     background-color: rgba(2, 132, 199, 0.06) !important;
     border-right: 1px solid var(--border-slate) !important;
     color: var(--color-cyan) !important;
+    padding: 24px 20px !important;
+}
+
+.bullet-body {
+    padding-left: 20px !important;
 }
 
 .bullet-body h5 {
     color: #0f172a !important;
+    margin-bottom: 8px !important;
+    font-size: 1.15rem !important;
 }
 
 .bullet-body p {
     color: #475569 !important;
+    line-height: 1.7 !important;
 }
 
 /* Footer */
@@ -2331,6 +2365,7 @@ html, body {
     border-top: 1px solid var(--border-slate) !important;
     background-color: rgba(255, 255, 255, 0.8) !important;
     color: #64748b !important;
+    padding: 30px 40px !important;
 }
 
 /* Contact Page form panel */
@@ -2338,6 +2373,7 @@ html, body {
     background-color: rgba(255, 255, 255, 0.75) !important;
     border: 1px solid var(--border-slate) !important;
     box-shadow: 0 20px 40px rgba(148, 163, 184, 0.15) !important;
+    padding: 40px !important;
 }
 
 .terminal-logs-box {
@@ -2349,6 +2385,7 @@ html, body {
     background-color: rgba(226, 232, 240, 0.9) !important;
     border-bottom: 1px solid var(--border-slate) !important;
     color: #475569 !important;
+    padding: 10px 16px !important;
 }
 
 .term-title {
@@ -2357,11 +2394,23 @@ html, body {
 
 .terminal-body-text {
     color: #334155 !important;
+    padding: 16px !important;
+}
+
+.form-row {
+    margin-bottom: 24px !important; /* 입력 폼 행 간격 넓힘 */
+}
+
+.input-label {
+    margin-bottom: 10px !important;
+    display: inline-block !important;
+    font-weight: 600 !important;
 }
 
 .input-wrapper {
     background-color: rgba(248, 250, 252, 0.9) !important;
     border: 1px solid var(--border-slate) !important;
+    padding: 12px 16px !important;
 }
 
 .input-wrapper input {
@@ -2376,6 +2425,7 @@ html, body {
     background-color: rgba(248, 250, 252, 0.9) !important;
     border: 1px solid var(--border-slate) !important;
     color: #0f172a !important;
+    padding: 12px 16px !important;
 }
 
 .select-arrow {
@@ -2386,6 +2436,8 @@ html, body {
     border: 1px dashed var(--border-slate) !important;
     background-color: rgba(248, 250, 252, 0.8) !important;
     color: #475569 !important;
+    padding: 16px !important;
+    margin-top: 12px !important;
 }
 
 .file-upload-btn:hover {
@@ -2398,12 +2450,14 @@ html, body {
     background-color: rgba(255, 255, 255, 0.95) !important;
     border: 1px solid var(--border-slate) !important;
     box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15) !important;
+    padding: 40px !important;
 }
 
 .report-header {
     background-color: rgba(241, 245, 249, 0.95) !important;
     border-bottom: 1px solid var(--border-slate) !important;
     color: #0f172a !important;
+    padding: 16px 24px !important;
 }
 
 .report-title {
@@ -2417,17 +2471,21 @@ html, body {
 .radar-box {
     background-color: rgba(248, 250, 252, 0.9) !important;
     border: 1px solid var(--border-slate) !important;
+    padding: 24px !important;
 }
 
 .report-meta-box {
     background-color: rgba(241, 245, 249, 0.9) !important;
     border: 1px solid var(--border-slate) !important;
     color: #334155 !important;
+    padding: 16px 20px !important;
+    margin-bottom: 24px !important;
 }
 
 .score-card {
     background-color: rgba(255, 255, 255, 0.8) !important;
     border: 1px solid var(--border-slate) !important;
+    padding: 16px !important;
 }
 
 .score-label {
@@ -2442,10 +2500,12 @@ html, body {
     background-color: rgba(248, 250, 252, 0.9) !important;
     border: 1px solid var(--border-slate) !important;
     color: #334155 !important;
+    padding: 20px 24px !important;
 }
 
 .report-conclusion h4 {
     color: #0f172a !important;
+    margin-bottom: 10px !important;
 }
 
 /* Dashboard Editor Layout */
@@ -2457,6 +2517,7 @@ html, body {
 .tab-btn {
     border-bottom: 1px solid var(--border-slate) !important;
     color: #64748b !important;
+    padding: 18px 24px !important;
 }
 
 .tab-btn:hover {
@@ -2479,6 +2540,7 @@ html, body {
     background-color: rgba(241, 245, 249, 0.95) !important;
     border-bottom: 1px solid var(--border-slate) !important;
     color: #475569 !important;
+    padding: 14px 24px !important;
 }
 
 .file-path {
@@ -2493,10 +2555,16 @@ html, body {
 .line-numbers {
     border-right: 1px solid rgba(226, 232, 240, 0.8) !important;
     color: #94a3b8 !important;
+    padding: 20px 10px !important;
+}
+
+.code-viewport {
+    padding: 20px !important;
 }
 
 .code-viewport pre code {
     color: #334155 !important;
+    line-height: 1.6 !important;
 }
 
 .json-key { color: #0284c7 !important; }
@@ -2509,16 +2577,20 @@ html, body {
 
 .dashboard-preview-panel {
     background-color: rgba(255, 255, 255, 0.95) !important;
+    padding: 24px !important;
 }
 
 .preview-title {
     border-bottom: 1px solid var(--border-slate) !important;
     color: #475569 !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 20px !important;
 }
 
 .node-graph-mini, .coordinate-map, .bar-chart-visualization {
     background-color: rgba(248, 250, 252, 0.9) !important;
     border: 1px solid var(--border-slate) !important;
+    padding: 20px !important;
 }
 
 .coordinate-map .axis-x, .coordinate-map .axis-y {
@@ -2545,12 +2617,17 @@ html, body {
     background-color: rgba(241, 245, 249, 0.9) !important;
     border: 1px solid var(--border-slate) !important;
     color: #475569 !important;
+    padding: 16px !important;
+    margin-top: 20px !important;
 }
 
-/* Insights Card Accordion Overrides */
+/* Insights Card Accordion Overrides & Spacious Legibility */
 .insight-card {
     background-color: rgba(255, 255, 255, 0.75) !important;
     border: 1px solid var(--border-slate) !important;
+    margin-bottom: 30px !important; /* 카드 간 간격 확대 */
+    padding: 28px !important; /* 카드 내부 패딩 확대 */
+    border-radius: 12px !important;
 }
 
 .insight-card:hover {
@@ -2560,34 +2637,106 @@ html, body {
 
 .insight-title {
     color: #0f172a !important;
+    font-size: 1.68rem !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    margin-top: 10px !important;
+    margin-bottom: 14px !important;
 }
 
 .insight-summary {
     color: #475569 !important;
+    font-size: 1.02rem !important;
+    line-height: 1.68 !important;
+    margin-bottom: 20px !important;
 }
 
 .insight-meta-top {
     color: #64748b !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important; /* 태그, 날짜, 버전 간 간격 확보 */
+    margin-bottom: 14px !important;
 }
 
 .insight-badge {
     background-color: rgba(2, 132, 199, 0.06) !important;
     color: var(--color-cyan) !important;
+    padding: 4px 10px !important;
+    font-size: 0.72rem !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+}
+
+.insight-telemetry-box {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: 16px !important;
+    background-color: rgba(241, 245, 249, 0.85) !important;
+    border: 1px solid var(--border-slate) !important;
+    padding: 20px 24px !important;
+    margin-bottom: 28px !important;
+    border-radius: 8px !important;
+}
+
+.tel-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 0 !important;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+.tel-item:last-child {
+    border-bottom: none !important;
+}
+
+.tel-item .lbl {
+    font-size: 0.8rem !important;
+    color: #64748b !important;
+    font-weight: 500 !important;
+    margin-right: 16px !important; /* 텍스트 겹침 방지 여백 */
+}
+
+.tel-item .val {
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    color: #0f172a !important;
 }
 
 .insight-reading-body {
     border-top: 1px solid var(--border-slate) !important;
     color: #334155 !important;
+    padding-top: 28px !important;
+    margin-top: 12px !important;
 }
 
 .insight-reading-body h6 {
     color: #0f172a !important;
+    font-size: 1.18rem !important;
+    font-weight: 700 !important;
+    margin-top: 28px !important;
+    margin-bottom: 12px !important;
+}
+
+.insight-reading-body h6:first-of-type {
+    margin-top: 0 !important;
+}
+
+.insight-reading-body p {
+    font-size: 1.05rem !important;
+    line-height: 1.85 !important; /* 독서에 가장 편안한 1.85 행간 */
+    margin-bottom: 20px !important; /* 단락 간격 확실하게 확보 */
+    color: #334155 !important;
 }
 
 /* Services page stage elements */
 .service-stage-card {
     background-color: rgba(255, 255, 255, 0.75) !important;
     border: 1px solid var(--border-slate) !important;
+    margin-bottom: 30px !important;
+    padding: 32px !important;
+    border-radius: 12px !important;
 }
 
 .service-stage-card:hover {
@@ -2597,17 +2746,23 @@ html, body {
 
 .stage-header {
     border-bottom: 1px solid var(--border-slate) !important;
+    padding-bottom: 16px !important;
+    margin-bottom: 20px !important;
 }
 
 .stage-title {
     color: #0f172a !important;
+    font-size: 1.48rem !important;
 }
 
 .stage-body p {
     color: #475569 !important;
+    line-height: 1.75 !important;
 }
 
 .stage-badge {
     background-color: rgba(2, 132, 199, 0.06) !important;
     color: var(--color-cyan) !important;
+    padding: 4px 10px !important;
+    border-radius: 4px !important;
 }
