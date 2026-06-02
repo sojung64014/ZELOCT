@@ -45,12 +45,12 @@ function initCursorTracker() {
         item.addEventListener('mouseenter', () => {
             tracker.style.width = '30px';
             tracker.style.height = '30px';
-            tracker.style.borderColor = '#b07d5c';
+            tracker.style.borderColor = '#00F0FF';
         });
         item.addEventListener('mouseleave', () => {
             tracker.style.width = '20px';
             tracker.style.height = '20px';
-            tracker.style.borderColor = '#b07d5c';
+            tracker.style.borderColor = '#00F0FF';
         });
     });
 }
@@ -337,15 +337,15 @@ function initZeloctEngine() {
     if (fileInput) {
         fileInput.addEventListener('change', () => {
             if (fileInput.files.length > 0) {
-                fileNameDisplay.textContent = fileInput.files[0].name;
-                fileNameDisplay.style.color = '#b07d5c';
-                appendLog(`[업로드] 분석할 사진 확인됨: ${fileInput.files[0].name}`);
-            } else {
-                fileNameDisplay.textContent = "선택된 사진 없음";
-                fileNameDisplay.style.color = '#64748b';
-            }
-        });
-    }
+                 fileNameDisplay.textContent = fileInput.files[0].name;
+                 fileNameDisplay.style.color = '#00F0FF';
+                 appendLog(`[업로드] 분석할 사진 확인됨: ${fileInput.files[0].name}`);
+             } else {
+                 fileNameDisplay.textContent = "선택된 사진 없음";
+                 fileNameDisplay.style.color = '#64748b';
+             }
+         });
+     }
 
     function appendLog(text, type = 'standard') {
         const p = document.createElement('p');
