@@ -45,12 +45,12 @@ function initCursorTracker() {
         item.addEventListener('mouseenter', () => {
             tracker.style.width = '30px';
             tracker.style.height = '30px';
-            tracker.style.borderColor = '#00F0FF';
+            tracker.style.borderColor = '#b07d5c';
         });
         item.addEventListener('mouseleave', () => {
             tracker.style.width = '20px';
             tracker.style.height = '20px';
-            tracker.style.borderColor = '#00F0FF';
+            tracker.style.borderColor = '#b07d5c';
         });
     });
 }
@@ -104,22 +104,22 @@ function initFaceMeshSimulator() {
         const absSym = Math.abs(symVal);
         let asymPercentage = (absSym / 30 * 12.5).toFixed(3);
         if (absSym === 0) {
-            telAsym.textContent = "0.000% (매우 대칭적 - 완벽)";
+            telAsym.textContent = "좌우 대칭 밸런스: 100% (완벽한 조화)";
             telAsym.className = "tel-value cyan-txt";
         } else if (absSym < 10) {
-            telAsym.textContent = `${asymPercentage}% (균형적 범주)`;
+            telAsym.textContent = `${(100 - parseFloat(asymPercentage)).toFixed(1)}% (조화로운 밸런스)`;
             telAsym.className = "tel-value cyan-txt";
         } else {
-            telAsym.textContent = `${asymPercentage}% (비대칭 편차 감지)`;
+            telAsym.textContent = `${(100 - parseFloat(asymPercentage)).toFixed(1)}% (보완이 필요한 밸런스)`;
             telAsym.className = "tel-value text-muted";
         }
         
         // Calculate length ratio status
         if (lenRatio === 1) {
-            telPhi.textContent = "1 : 1.618 (황금 비율 PHI)";
+            telPhi.textContent = "1 : 1.618 (이상적인 황금 비율)";
         } else {
             const currentRatioVal = (1.618 * lenRatio).toFixed(3);
-            telPhi.textContent = `1 : ${currentRatioVal}`;
+            telPhi.textContent = `1 : ${currentRatioVal} (페이스 수직 비율)`;
         }
         
         // Apply deformations to Outer Contour
@@ -250,7 +250,7 @@ function initFaceMeshSimulator() {
             const svgBox = laser.ownerSVGElement.getBoundingClientRect();
             // Calculate relative laser Y position
             const relY = ((bbox.top - svgBox.top) / svgBox.height * 400).toFixed(1);
-            telAxis.textContent = `Y = ${relY}px`;
+            telAxis.textContent = `스캔 완료`;
         }
     }, 60);
 
@@ -338,10 +338,10 @@ function initZeloctEngine() {
         fileInput.addEventListener('change', () => {
             if (fileInput.files.length > 0) {
                 fileNameDisplay.textContent = fileInput.files[0].name;
-                fileNameDisplay.style.color = '#00F0FF';
-                appendLog(`[업로드] 안면 로컬 소스 확인됨: ${fileInput.files[0].name}`);
+                fileNameDisplay.style.color = '#b07d5c';
+                appendLog(`[업로드] 분석할 사진 확인됨: ${fileInput.files[0].name}`);
             } else {
-                fileNameDisplay.textContent = "선택된 파일 없음";
+                fileNameDisplay.textContent = "선택된 사진 없음";
                 fileNameDisplay.style.color = '#64748b';
             }
         });
@@ -374,21 +374,21 @@ function initZeloctEngine() {
         // Start scan logic
         submitBtn.disabled = true;
         submitBtn.style.cursor = 'wait';
-        btnText.textContent = "[정밀 분석 스캔 가동 중...]";
+        btnText.textContent = "스타일 분석 중...";
         btnScanner.style.animation = 'laser-sweep 2s infinite linear';
         
         // Clear terminal log screen
         logContainer.innerHTML = '';
-        appendLog(`[시스템] ZELOCT AI 분석 엔진 로딩 중...`, 'system');
+        appendLog(`[안내] ZELOCT 스타일 분석 매칭을 로딩 중입니다...`, 'system');
         
         const scanLogs = [
-            { text: `[시스템] 터미널 보안 활성화. 신청자 식별 토큰: "${clientId.toUpperCase()}"`, delay: 300, type: 'standard' },
-            { text: `[스캔] 분석 대상 데이터 소스 경로 지정: "${targetData}"`, delay: 700, type: 'standard' },
-            { text: `[스캔] 안면 외곽 및 주요 대칭 격자(Bilateral Grid) 캘리브레이션 실행...`, delay: 1100, type: 'warning' },
-            { text: `[연산] 대칭 분석 및 적합률 변환 처리 시작 (설정: ${settings.toUpperCase()})`, delay: 1500, type: 'standard' },
-            { text: `[연산] 안면 120,490개 좌표계 추출 완료. 대칭 지표: 99.88%`, delay: 1900, type: 'success' },
-            { text: `[매핑] 다차원 포지셔닝 및 비주얼 가이드 생성 완료.`, delay: 2200, type: 'standard' },
-            { text: `[완료] ZELOCT AI 안면 아키텍처 종합 리포트 패키지가 안전하게 완성되었습니다.`, delay: 2500, type: 'success' }
+            { text: `[안내] 신청자 등록 확인: "${clientId.toUpperCase()}"`, delay: 300, type: 'standard' },
+            { text: `[업로드] 분석 이미지 등록 완료`, delay: 700, type: 'standard' },
+            { text: `[매핑] 페이스 라인 특징점 추출 및 밸런스 측정 시작...`, delay: 1100, type: 'warning' },
+            { text: `[연산] 퍼스널 뷰티 & 스타일 데이터 대칭 분석 중...`, delay: 1500, type: 'standard' },
+            { text: `[분석] 페이스 라인 특징점 추출 완료. 매우 조화로움`, delay: 1900, type: 'success' },
+            { text: `[매핑] 맞춤형 뷰티 스타일링 가이드 생성 완료.`, delay: 2200, type: 'standard' },
+            { text: `[성공] ZELOCT 1:1 퍼스널 스타일링 진단 리포트가 완성되었습니다.`, delay: 2500, type: 'success' }
         ];
 
         scanLogs.forEach(log => {
@@ -402,7 +402,7 @@ function initZeloctEngine() {
             // Reset button status
             submitBtn.disabled = false;
             submitBtn.style.cursor = 'pointer';
-            btnText.textContent = "[분석 시작하기]";
+            btnText.textContent = "스타일 분석 시작하기";
             btnScanner.style.animation = 'none';
             
             // Set Modal Data
@@ -412,26 +412,23 @@ function initZeloctEngine() {
             
             // Adjust radar score dimensions based on settings dropdown
             if (settings === 'high-precision') {
-                // Maximum perfection symmetry
                 repPolygon.setAttribute('points', '100,28 172,100 100,172 28,100');
-                document.querySelector('.score-card:nth-child(1) .score-num').childNodes[0].textContent = "98.92";
-                document.querySelector('.score-card:nth-child(2) .score-num').childNodes[0].textContent = "0.004";
-                document.querySelector('.score-card:nth-child(3) .score-num').textContent = "초정밀 균형형";
-                document.getElementById('report-text').textContent = "HIGH-PRECISION 초정밀 매트릭스 스캔 결과, 대상은 오차 0.004mm 범위 내에서 거의 완벽한 수평 대칭과 구조적 비례를 달성하고 있습니다. 이는 시각적으로 극도의 안정감과 고급스러움을 연출하며, 정돈되고 신뢰성 높은 인상의 기준을 보여줍니다.";
+                document.querySelector('.score-card:nth-child(1) .score-num').childNodes[0].textContent = "99.2";
+                document.querySelector('.score-card:nth-child(2) .score-num').childNodes[0].textContent = "99.1";
+                document.querySelector('.score-card:nth-child(3) .score-num').textContent = "우아한 대칭형";
+                document.getElementById('report-text').textContent = "프리미엄 페이스 밸런스 스캔 결과, 당신은 매우 안정적이고 기품 있는 수평 대칭과 골격 비례를 지니고 있습니다. 이는 시각적으로 차분하면서도 고급스러운 분위기를 풍깁니다. ZELOCT는 내추럴한 글로우 메이크업과 우아한 실크 텍스처 의상, 그리고 단정하면서도 볼륨감 있는 헤어 스타일을 추천합니다.";
             } else if (settings === 'structural-only') {
-                // Standard structural focus
                 repPolygon.setAttribute('points', '100,45 168,100 100,165 42,100');
-                document.querySelector('.score-card:nth-child(1) .score-num').childNodes[0].textContent = "91.24";
-                document.querySelector('.score-card:nth-child(2) .score-num').childNodes[0].textContent = "0.021";
-                document.querySelector('.score-card:nth-child(3) .score-num').textContent = "입체 구조형";
-                document.getElementById('report-text').textContent = "외곽선 입체 균형 측정 결과, 좌우의 물리적 대칭성보다 안면 골격의 세련된 조화도가 도드라집니다. 중안부와 이마의 수직 대비율이 모던하고 감각적인 인상을 형성하며, 개성 있고 스타일리시한 포지셔닝에 최적화된 결과입니다.";
+                document.querySelector('.score-card:nth-child(1) .score-num').childNodes[0].textContent = "93.4";
+                document.querySelector('.score-card:nth-child(2) .score-num').childNodes[0].textContent = "92.8";
+                document.querySelector('.score-card:nth-child(3) .score-num').textContent = "감각적 시크형";
+                document.getElementById('report-text').textContent = "페이스 라인의 흐름을 분석한 결과, 입체적이고 현대적인 페이스 골격이 대단히 매력적입니다. 세련되면서도 당당한 도시적인 분위기가 특징으로, ZELOCT는 에지 있는 세미 스모키 메이크업, 매트한 텍스처의 테일러드 아웃핏, 그리고 시크한 태슬컷 또는 슬릭헤어 스타일링을 강력히 추천합니다.";
             } else {
-                // Default values
                 repPolygon.setAttribute('points', '100,35 162,100 100,165 38,100');
-                document.querySelector('.score-card:nth-child(1) .score-num').childNodes[0].textContent = "94.85";
-                document.querySelector('.score-card:nth-child(2) .score-num').childNodes[0].textContent = "0.012";
-                document.querySelector('.score-card:nth-child(3) .score-num').textContent = "클래식 조화형";
-                document.getElementById('report-text').textContent = "안면 정밀 스캔 결과, 대상은 오차 범위 0.012mm 수준의 최상위 대칭 조화를 보여줍니다. 이마 끝부터 턱 끝까지의 균형도가 매우 뛰어나며, 유행을 타지 않는 정석적이고 신뢰도 높은 아우라를 구현하기에 완벽한 미적 균형을 입증합니다.";
+                document.querySelector('.score-card:nth-child(1) .score-num').childNodes[0].textContent = "98.8";
+                document.querySelector('.score-card:nth-child(2) .score-num').childNodes[0].textContent = "98.2";
+                document.querySelector('.score-card:nth-child(3) .score-num').textContent = "우아한 클래식 조화형";
+                document.getElementById('report-text').textContent = "페이스 라인 이미지 분석 결과, 당신은 대단히 조화롭고 차분한 대칭 균형을 지니고 있습니다. 세련되면서도 신뢰감을 주는 이미지를 연출하기에 이상적인 비율로, ZELOCT는 부드러운 골드/웜 베이지 톤의 메이크업과 자연스러운 곡선의 웨이브 헤어, 그리고 우아한 클래식 실루엣의 드레스 스타일링을 강력히 추천합니다.";
             }
             
             // Show modal with a slick fade-in
@@ -457,19 +454,20 @@ function initZeloctEngine() {
     if (exportBtn) {
         exportBtn.addEventListener('click', () => {
             const originalText = exportBtn.innerHTML;
-            exportBtn.innerHTML = `<span><i class="fa-solid fa-spinner fa-spin"></i> 분석 리포트 패키지 생성 및 보안 암호화 중...</span>`;
+            exportBtn.innerHTML = `<span><i class="fa-solid fa-spinner fa-spin"></i> 스타일 리포트 PDF 파일 생성 중...</span>`;
             exportBtn.disabled = true;
             
             setTimeout(() => {
-                exportBtn.innerHTML = `<span><i class="fa-solid fa-check"></i> 암호화 리포트 생성 완료</span>`;
-                appendLog(`[다운로드] 암호화 리포트 패키지 다운로드 완료: ZELOCT_REPORT_${repClientId.textContent}_SECURED.pdf`, 'success');
+                exportBtn.innerHTML = `<span><i class="fa-solid fa-check"></i> 리포트 PDF 저장 완료</span>`;
+                appendLog(`[다운로드] 스타일링 리포트 다운로드 완료: ZELOCT_STYLE_REPORT_${repClientId.textContent}.pdf`, 'success');
                 
                 setTimeout(() => {
-                    alert(`[ZELOCT SECURE VAULT] 리포트 파일 생성 및 암호화 다운로드가 성공적으로 완료되었습니다.`);
+                    alert(`[ZELOCT Premium Studio] 당신만을 위한 맞춤형 퍼스널 스타일링 리포트 파일이 성공적으로 다운로드되었습니다.`);
                     exportBtn.innerHTML = originalText;
                     exportBtn.disabled = false;
                     modal.style.display = 'none';
                 }, 1000);
+                
             }, 1500);
         });
     }

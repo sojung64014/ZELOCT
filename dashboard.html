@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -27,12 +27,11 @@
         <div class="header-container">
             <a href="index.html" class="logo-area">
                 <span class="logo-symbol">
-                    <svg viewBox="0 0 40 40" width="30" height="30">
-                        <polygon points="5,5 35,5 35,35 5,35" fill="none" stroke="#00F0FF" stroke-width="1.5" />
-                        <line x1="20" y1="5" x2="20" y2="35" stroke="#00F0FF" stroke-width="1" stroke-dasharray="2,2" />
-                        <line x1="5" y1="20" x2="35" y2="20" stroke="#00F0FF" stroke-width="1" stroke-dasharray="2,2" />
-                        <circle cx="20" cy="20" r="4" fill="#00F0FF" />
-                        <polygon points="12,12 28,12 20,28" fill="none" stroke="#FFFFFF" stroke-width="1" />
+                    <svg viewBox="0 0 40 40" width="26" height="26">
+                        <ellipse cx="20" cy="20" rx="14" ry="18" fill="none" stroke="#b07d5c" stroke-width="1.2" />
+                        <line x1="20" y1="2" x2="20" y2="38" stroke="#c9a882" stroke-width="0.8" stroke-dasharray="3,3" />
+                        <line x1="6" y1="20" x2="34" y2="20" stroke="#c9a882" stroke-width="0.8" stroke-dasharray="3,3" />
+                        <circle cx="20" cy="20" r="3" fill="#b07d5c" opacity="0.7" />
                     </svg>
                 </span>
                 <span class="logo-text">ZELOCT</span>
@@ -42,13 +41,11 @@
                 <a href="about.html" class="nav-item"><span class="nav-num">02</span> PHILOSOPHY</a>
                 <a href="services.html" class="nav-item"><span class="nav-num">03</span> SERVICES</a>
                 <a href="dashboard.html" class="nav-item active"><span class="nav-num">04</span> ARCHIVES</a>
-                <a href="contact.html" class="nav-item nav-btn"><span class="nav-num">05</span> START SCAN</a>
+                <a href="insights.html" class="nav-item nav-btn"><span class="nav-num">05</span> INSIGHTS</a>
             </nav>
             <div class="system-status-indicator">
                 <span class="status-dot-pulse"></span>
-                <span class="status-label">SYS.STATUS: <span class="cyan-txt">ACTIVE</span></span>
-                <span class="status-divider">|</span>
-                <span class="status-metric">CORE_V_4.8.9</span>
+                <span class="status-label">Style Studio</span>
             </div>
         </div>
     </header>
@@ -59,36 +56,36 @@
         <!-- LAYER 04: SYSTEM DASHBOARD (PORTFOLIO) -->
         <section id="dashboard" class="dashboard-section">
             <div class="section-container">
-                <div class="section-badge">// LAYER 04: SYSTEM DASHBOARD (아카이브)</div>
+                <div class="section-badge">ZELOCT STYLE ARCHIVES (스타일 아카이브)</div>
                 <div class="section-title-area">
-                    <h2 class="section-title">OPERATIONAL ARCHIVES</h2>
-                    <p class="section-subtitle">ZELOCT 엔진을 통해 실제로 수행된 데이터 분석 사례들을 아래 에디터 대시보드 탭을 통해 알기 쉽게 살펴보실 수 있습니다.</p>
+                    <h2 class="section-title">PREMIUM STYLING ARCHIVES</h2>
+                    <p class="section-subtitle">ZELOCT 뷰티 스튜디오가 제안한 고품격 퍼스널 스타일링 진단 사례와 아카이브 데이터를 아래 탭을 통해 살펴보실 수 있습니다.</p>
                 </div>
 
                 <div class="dashboard-wrapper">
                     <!-- Dashboard Navigation Tabs -->
                     <div class="dashboard-tabs">
                         <button class="tab-btn active" data-target="entry-01">
-                            <span class="tab-icon"><i class="fa-solid fa-database"></i></span>
+                            <span class="tab-icon"><i class="fa-solid fa-gem"></i></span>
                             <span class="tab-name">사례 01</span>
-                            <span class="tab-file">face_analysis_db.json</span>
+                            <span class="tab-file">beauty_balance_profile.json</span>
                         </button>
                         <button class="tab-btn" data-target="entry-02">
-                            <span class="tab-icon"><i class="fa-solid fa-chart-line"></i></span>
+                            <span class="tab-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
                             <span class="tab-name">사례 02</span>
-                            <span class="tab-file">visual_logic_report.py</span>
+                            <span class="tab-file">personal_color_guide.style</span>
                         </button>
                         <button class="tab-btn" data-target="entry-03">
-                            <span class="tab-icon"><i class="fa-solid fa-vials"></i></span>
+                            <span class="tab-icon"><i class="fa-solid fa-ribbon"></i></span>
                             <span class="tab-name">사례 03</span>
-                            <span class="tab-file">choice_experiment.md</span>
+                            <span class="tab-file">studio_launch_showcase.md</span>
                         </button>
                     </div>
 
                     <!-- Dashboard Content Panel -->
                     <div class="dashboard-panel">
                         <div class="panel-header">
-                            <div class="file-path">// 레포지토리 / 아카이브 / <span id="active-file-name">face_analysis_db.json</span></div>
+                            <div class="file-path">아카이브 / 스타일 진단서 / <span id="active-file-name">beauty_balance_profile.json</span></div>
                             <div class="panel-actions">
                                 <span class="btn-indicator font-mono">UTF-8</span>
                                 <span class="btn-indicator font-mono cyan-txt">READY</span>
@@ -99,28 +96,30 @@
                             <!-- Tab 1 Content -->
                             <div id="entry-01" class="tab-content active">
                                 <div class="code-editor-layout">
-                                    <div class="line-numbers">
-                                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
-                                    </div>
-                                    <div class="code-viewport">
+                                    <div class="code-editor-main">
+                                        <div class="line-numbers">
+                                            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+                                        </div>
+                                        <div class="code-viewport">
 <pre><code>{
-  <span class="json-key">"데이터베이스_ID"</span>: <span class="json-val">"Z-DB-2026"</span>,
-  <span class="json-key">"분석명"</span>: <span class="json-val">"안면 데이터 분석 기록관"</span>,
-  <span class="json-key">"스캔상태"</span>: <span class="json-val">"분석완료"</span>,
-  <span class="json-key">"시각그래픽_수치"</span>: {
-    <span class="json-key">"정밀_스캔노드"</span>: <span class="json-num">1024</span>,
-    <span class="json-key">"오차측정_단위"</span>: <span class="json-val">"0.01mm"</span>,
-    <span class="json-key">"계산된_좌표벡터"</span>: <span class="json-num">503920</span>
+  <span class="json-key">"프로필_ID"</span>: <span class="json-val">"Z-PROFILE-2026"</span>,
+  <span class="json-key">"컨설팅_유형"</span>: <span class="json-val">"퍼스널 페이스 & 스타일 매칭"</span>,
+  <span class="json-key">"진단_상태"</span>: <span class="json-val">"컨설팅 완료"</span>,
+  <span class="json-key">"페이스_라인_분석"</span>: {
+    <span class="json-key">"스캔_랜드마크_감지"</span>: <span class="json-num">1024</span>,
+    <span class="json-key">"좌우_비율_대칭성"</span>: <span class="json-val">"98.8%"</span>,
+    <span class="json-key">"추천_스타일_컬러"</span>: <span class="json-val">"웜 골드 & 베이지"</span>
   },
-  <span class="json-key">"핵심_지표"</span>: {
-    <span class="json-key">"평균_좌우_대칭오차"</span>: <span class="json-num">0.031</span>,
-    <span class="json-key">"황금비율_적합도"</span>: <span class="json-val">"98.42%"</span>
+  <span class="json-key">"토털_매칭_결과"</span>: {
+    <span class="json-key">"메이크업_권장타입"</span>: <span class="json-val">"내추럴 글로우"</span>,
+    <span class="json-key">"헤어스타일_권장타입"</span>: <span class="json-val">"페미닌 소프트 웨이브"</span>
   },
-  <span class="json-key">"한글설명"</span>: <span class="json-val">"안면 데이터를 3차원 점들로 조밀하게 연산하여 축적해 둔 ZELOCT의 핵심 아카이브 데이터 세트입니다."</span>
+  <span class="json-key">"한글설명"</span>: <span class="json-val">"고유의 페이스 밸런스를 측정하고, 최적의 헤어/메이크업/패션을 1:1 맞춤형으로 큐레이션한 ZELOCT만의 스타일링 리포트 데이터입니다."</span>
 }</code></pre>
+                                        </div>
                                     </div>
                                     <div class="dashboard-preview-panel">
-                                        <div class="preview-title">시각화 아카이브 프리뷰</div>
+                                        <div class="preview-title">스타일 아카이브 프리뷰</div>
                                         <div class="preview-visual">
                                             <!-- Interactive mini node-matrix graph -->
                                             <div class="node-graph-mini">
@@ -133,9 +132,9 @@
                                                 <div class="mini-node" style="top: 20%; left: 60%;" data-tooltip="노드_광대"></div>
                                             </div>
                                             <div class="preview-telemetry font-mono">
-                                                기준좌표계: 489.12<br>
-                                                캘리브레이션: 양호 [0.03초]<br>
-                                                가속기: WEBGL_2
+                                                스타일 톤: 웜 & 클래식<br>
+                                                매칭 매끄러움: 극히 조화로움<br>
+                                                스튜디오: Premium Suite
                                             </div>
                                         </div>
                                     </div>
@@ -145,24 +144,25 @@
                             <!-- Tab 2 Content -->
                             <div id="entry-02" class="tab-content">
                                 <div class="code-editor-layout">
-                                    <div class="line-numbers">
-                                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
-                                    </div>
-                                    <div class="code-viewport">
-<pre><code><span class="py-keyword">import</span> zeloct_core <span class="py-keyword">as</span> zc
-
-<span class="py-keyword">def</span> <span class="py-def">얼굴_비주얼_매핑</span>(안면_매트릭스):
-    <span class="py-comment"># 카테고리별 포지셔닝 맵과 정밀 축 매핑 분석 코드</span>
-    분석기 = zc.FaceArchitecture(정밀도=<span class="py-val">"HIGH"</span>)
-    좌표 = 분석기.map_to_2d_axes(안면_매트릭스)
+                                    <div class="code-editor-main">
+                                        <div class="line-numbers">
+                                            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+                                        </div>
+                                        <div class="code-viewport">
+<pre><code># ZELOCT Personal Styling Recommendation Rule
+def match_personal_style(face_harmony):
+    # 페이스 조화율과 이미지 포지셔닝 맵 큐레이션
+    styling_studio = zc.PremiumConsulting(grade="EXCLUSIVE")
+    coordinates = styling_studio.map_to_beauty_axes(face_harmony)
     
-    대칭성_지수 = 좌표.symmetry_index
-    구조_밀집도 = 좌표.structural_density
+    symmetry_index = coordinates.symmetry_index
+    line_softness = coordinates.line_softness
     
-    print(<span class="py-val">f"좌표 평면 위 매핑 결정 완료: X={대칭성_지수}, Y={구조_밀집도}"</span>)
-    <span class="py-keyword">return</span> 분석기.generate_final_report(좌표)
+    print(f"스타일 맵 포지셔닝 완료: X={symmetry_index}, Y={line_softness}")
+    return styling_studio.suggest_beauty_outfit(coordinates)
 
-<span class="py-comment"># 성공적으로 매핑 코드 실행 완료.</span></code></pre>
+# 성공적으로 스타일링 매칭 파라미터 구성 완료.</code></pre>
+                                        </div>
                                     </div>
                                     <div class="dashboard-preview-panel">
                                         <div class="preview-title">유형 포지셔닝 맵</div>
@@ -179,9 +179,9 @@
                                                 <div class="map-point pulsing" style="bottom: 70%; left: 65%;"></div>
                                             </div>
                                             <div class="preview-telemetry font-mono">
-                                                현재 포지션: 클래식 [65.0, 70.0]<br>
-                                                대비율: 하이엔드 클래식<br>
-                                                신뢰 지표: 99.87%
+                                                진단 포지션: 우아한 클래식 [65.0, 70.0]<br>
+                                                권장 실루엣: 소프트 테일러드 드레스<br>
+                                                밸런스 지수: 98.8%
                                             </div>
                                         </div>
                                     </div>
@@ -191,48 +191,50 @@
                             <!-- Tab 3 Content -->
                             <div id="entry-03" class="tab-content">
                                 <div class="code-editor-layout">
-                                    <div class="line-numbers">
-                                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
-                                    </div>
-                                    <div class="code-viewport">
-<pre><code># The Choice Experiment
-시각 데이터 시스템을 공간과 체험으로 확장했던 브랜드 런칭 이벤트의 수치 및 도표 중심 기록.
+                                    <div class="code-editor-main">
+                                        <div class="line-numbers">
+                                            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+                                        </div>
+                                        <div class="code-viewport">
+<pre><code># The Launching Showcase
+1:1 맞춤 페이스 밸런싱과 퍼스널 이미지 컨설팅의 정수를 공간과 예술로 확장했던 ZELOCT 프리미엄 런칭 이벤트 기록.
 
-## 실험 핵심 지표
-- **총 참여 디바이스**: 5,291개 기기
-- **평균 연산 대기속도**: 평균 420ms (0.42초)
-- **분석 정확도 지수**: 97.8%
+## 쇼케이스 하이라이트
+- **총 방문 및 진단 고객**: 5,291명
+- **평균 진단 리포트 도출 시간**: 1.5분
+- **진단 만족도 지수**: 98.6%
 
-## 공간 설치 캘리브레이션
-- 3D 레이저 홀로그램 기준 좌표: `[x:42.5, y:-12.4, z:90.1]`
-- 가동 빛 파장: 480nm Electric Cyan
-- 시스템 연동 피드백 상태: **양호 및 안정**</code></pre>
+## 공간 큐레이션 및 오브제
+- 무광 베이지 & 샴페인 골드 테마 디자인
+- 조명: 3200k Warm Gold 조명 설계 (페이스의 자연스러운 음영 강조)
+- 프라이빗 1:1 스타일링 컨설팅 룸: **상시 예약 운영**</code></pre>
+                                        </div>
                                     </div>
                                     <div class="dashboard-preview-panel">
-                                        <div class="preview-title">런칭 이벤트 실시간 스펙</div>
+                                        <div class="preview-title">런칭 쇼케이스 실시간 스펙</div>
                                         <div class="preview-visual">
                                             <!-- Interactive metric bar chart representation -->
                                             <div class="bar-chart-visualization">
                                                 <div class="bar-item">
-                                                    <span class="bar-label">시스템 부하율</span>
-                                                    <div class="bar-track"><div class="bar-fill" style="width: 42%;"></div></div>
-                                                    <span class="bar-val">42%</span>
+                                                    <span class="bar-label">진단 신속성</span>
+                                                    <div class="bar-track"><div class="bar-fill" style="width: 96%;"></div></div>
+                                                    <span class="bar-val">96%</span>
                                                 </div>
                                                 <div class="bar-item">
-                                                    <span class="bar-label">스캔 정확도</span>
-                                                    <div class="bar-track"><div class="bar-fill cyan-bg" style="width: 97.8%;"></div></div>
-                                                    <span class="bar-val">97.8%</span>
+                                                    <span class="bar-label">스타일 만족도</span>
+                                                    <div class="bar-track"><div class="bar-fill cyan-bg" style="width: 98.6%;"></div></div>
+                                                    <span class="bar-val">98.6%</span>
                                                 </div>
                                                 <div class="bar-item">
-                                                    <span class="bar-label">실시간 유지율</span>
-                                                    <div class="bar-track"><div class="bar-fill" style="width: 88%;"></div></div>
-                                                    <span class="bar-val">88%</span>
+                                                    <span class="bar-label">재방문 희망률</span>
+                                                    <div class="bar-track"><div class="bar-fill" style="width: 95%;"></div></div>
+                                                    <span class="bar-val">95%</span>
                                                 </div>
                                             </div>
                                             <div class="preview-telemetry font-mono">
-                                                가동기기: 5,291개 라이브<br>
-                                                동기화 상태: 완료<br>
-                                                장소: 서울 성수 쇼케이스 룸
+                                                진단고객: 5,291명 돌파<br>
+                                                예약 상태: 프라이빗 예약제<br>
+                                                장소: 서울 청담동 ZELOCT 라운지
                                             </div>
                                         </div>
                                     </div>
@@ -251,10 +253,10 @@
         <div class="footer-container">
             <div class="footer-left">
                 <span class="footer-brand">ZELOCT</span>
-                <span class="footer-copyright">&copy; 2026 ZELOCT. THE HIGH-END ARCHITECTURE OF VISUAL LOGIC. ALL RIGHTS RESERVED.</span>
+                <span class="footer-copyright">&copy; 2026 ZELOCT. AI Image Analysis &amp; Personal Styling. All rights reserved.</span>
             </div>
-            <div class="footer-right font-mono">
-                <span>SECURE TERMINAL // SSL_ENCRYPTED</span>
+            <div class="footer-right">
+                <span>Premium Styling Studio</span>
             </div>
         </div>
     </footer>
