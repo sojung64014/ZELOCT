@@ -28,11 +28,11 @@
             <a href="index.html" class="logo-area">
                 <span class="logo-symbol">
                     <svg viewBox="0 0 40 40" width="30" height="30">
-                        <polygon points="5,5 35,5 35,35 5,35" fill="none" stroke="#00F0FF" stroke-width="1.5" />
-                        <line x1="20" y1="5" x2="20" y2="35" stroke="#00F0FF" stroke-width="1" stroke-dasharray="2,2" />
-                        <line x1="5" y1="20" x2="35" y2="20" stroke="#00F0FF" stroke-width="1" stroke-dasharray="2,2" />
-                        <circle cx="20" cy="20" r="4" fill="#00F0FF" />
-                        <polygon points="12,12 28,12 20,28" fill="none" stroke="#FFFFFF" stroke-width="1" />
+                        <polygon points="5,5 35,5 35,35 5,35" fill="none" stroke="#D4735A" stroke-width="1.5" />
+                        <line x1="20" y1="5" x2="20" y2="35" stroke="#D4735A" stroke-width="1" stroke-dasharray="2,2" />
+                        <line x1="5" y1="20" x2="35" y2="20" stroke="#D4735A" stroke-width="1" stroke-dasharray="2,2" />
+                        <circle cx="20" cy="20" r="4" fill="#D4735A" />
+                        <polygon points="12,12 28,12 20,28" fill="none" stroke="#F0E6DC" stroke-width="1" />
                     </svg>
                 </span>
                 <span class="logo-text">ZELOCT</span>
@@ -53,7 +53,64 @@
 
     <!-- Main Container -->
     <main class="main-content">
-        
+
+        <!-- VIDEO BANNER SECTION -->
+        <section id="video-banner" class="video-banner-section">
+            <!-- Background Video -->
+            <div class="video-wrapper">
+                <video
+                    id="hero-video"
+                    class="hero-video"
+                    autoplay
+                    muted
+                    playsinline
+                    poster=""
+                >
+                    <source src="hero-video.mp4" type="video/mp4">
+                </video>
+                <!-- Fallback: Beauty gradient when no video -->
+                <div class="video-fallback-bg"></div>
+            </div>
+
+            <!-- Overlay -->
+            <div class="video-overlay"></div>
+
+            <!-- Content on top of video -->
+            <div class="video-banner-content">
+                <div class="vb-eyebrow font-mono">AI IMAGE ANALYSIS &amp; PERSONAL STYLING</div>
+                <h1 class="vb-title">
+                    <span class="vb-title-line vb-line-1">나만의 고유한</span>
+                    <span class="vb-title-line vb-line-2"><em>아름다움</em>을 발견하세요</span>
+                </h1>
+                <p class="vb-subtitle">페이스 라인 분석 기반 퍼스널 패션 · 뷰티 · 스타일링</p>
+                <div class="vb-actions">
+                    <a href="contact.html" class="vb-btn vb-btn-primary">
+                        <span>내 스타일 분석하기</span>
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </a>
+                    <a href="services.html" class="vb-btn vb-btn-secondary">
+                        <span>서비스 알아보기</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+                <!-- Scroll Indicator -->
+                <div class="vb-scroll-hint">
+                    <div class="vb-scroll-mouse">
+                        <div class="vb-scroll-dot"></div>
+                    </div>
+                    <span class="font-mono">SCROLL</span>
+                </div>
+            </div>
+
+            <!-- Bottom decorative bar -->
+            <div class="vb-bottom-bar font-mono">
+                <span class="vb-bar-item"><span class="vb-bar-dot"></span>ZELOCT Studio</span>
+                <span class="vb-bar-item">Seoul · 2026</span>
+                <span class="vb-bar-item">AI Beauty Analysis</span>
+                <span class="vb-bar-item vb-bar-highlight">Premium Styling</span>
+            </div>
+        </section>
+
         <!-- LAYER 01: HERO SECTION -->
         <section id="hero" class="hero-section">
             <div class="section-container">
@@ -113,62 +170,62 @@
                                     <!-- Neon Cyan background glow -->
                                     <defs>
                                         <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
-                                            <stop offset="0%" stop-color="rgba(0, 240, 255, 0.15)" />
-                                            <stop offset="100%" stop-color="rgba(10, 15, 30, 0)" />
+                                            <stop offset="0%" stop-color="rgba(212, 115, 90, 0.1)" />
+                                            <stop offset="100%" stop-color="rgba(21, 14, 12, 0)" />
                                         </radialGradient>
                                     </defs>
                                     <rect width="100%" height="100%" fill="url(#bg-glow)" />
                                     
                                     <!-- Scanning Laser Line -->
-                                    <line id="laser-line" x1="0" y1="50" x2="400" y2="50" stroke="#00F0FF" stroke-width="1.5" opacity="0.8" />
+                                    <line id="laser-line" x1="0" y1="50" x2="400" y2="50" stroke="#D4735A" stroke-width="1.5" opacity="0.8" />
                                     
                                     <!-- Axes -->
-                                    <line x1="200" y1="0" x2="200" y2="400" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="4,4" />
-                                    <line x1="0" y1="200" x2="400" y2="200" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="4,4" />
+                                    <line x1="200" y1="0" x2="200" y2="400" stroke="#2A1A16" stroke-width="1.5" stroke-dasharray="4,4" />
+                                    <line x1="0" y1="200" x2="400" y2="200" stroke="#2A1A16" stroke-width="1.5" stroke-dasharray="4,4" />
                                     
                                     <!-- Symmetrical Guide Circles -->
-                                    <circle cx="200" cy="200" r="160" fill="none" stroke="#1E293B" stroke-width="1" />
-                                    <circle cx="200" cy="200" r="120" fill="none" stroke="#1E293B" stroke-dasharray="2,2" stroke-width="1" />
+                                    <circle cx="200" cy="200" r="160" fill="none" stroke="#2A1A16" stroke-width="1" />
+                                    <circle cx="200" cy="200" r="120" fill="none" stroke="#2A1A16" stroke-dasharray="2,2" stroke-width="1" />
 
                                     <!-- Face Vector Wireframe -->
-                                    <polygon id="face-contour" points="200,80 270,100 320,160 330,230 290,300 200,340 110,300 70,230 80,160 130,100" fill="none" stroke="#334155" stroke-width="1" />
+                                    <polygon id="face-contour" points="200,80 270,100 320,160 330,230 290,300 200,340 110,300 70,230 80,160 130,100" fill="none" stroke="#4A2E20" stroke-width="1" />
                                     
                                     <!-- Inner features - Eyebrows & Eyes -->
-                                    <polyline id="eyebrow-left" points="140,160 165,150 190,160" fill="none" stroke="#00F0FF" stroke-width="1.5" />
-                                    <polyline id="eyebrow-right" points="260,160 235,150 210,160" fill="none" stroke="#00F0FF" stroke-width="1.5" />
+                                    <polyline id="eyebrow-left" points="140,160 165,150 190,160" fill="none" stroke="#D4735A" stroke-width="1.5" />
+                                    <polyline id="eyebrow-right" points="260,160 235,150 210,160" fill="none" stroke="#D4735A" stroke-width="1.5" />
                                     
                                     <!-- Eye Geometry Left -->
-                                    <polygon id="eye-left" points="145,175 162,168 180,175 162,182" fill="none" stroke="#FFFFFF" stroke-width="1" />
-                                    <circle id="pupil-left" cx="162" cy="175" r="3" fill="#00F0FF" />
+                                    <polygon id="eye-left" points="145,175 162,168 180,175 162,182" fill="none" stroke="#F0E6DC" stroke-width="1" />
+                                    <circle id="pupil-left" cx="162" cy="175" r="3" fill="#D4735A" />
                                     
                                     <!-- Eye Geometry Right -->
-                                    <polygon id="eye-right" points="255,175 238,168 220,175 238,182" fill="none" stroke="#FFFFFF" stroke-width="1" />
-                                    <circle id="pupil-right" cx="238" cy="175" r="3" fill="#00F0FF" />
+                                    <polygon id="eye-right" points="255,175 238,168 220,175 238,182" fill="none" stroke="#F0E6DC" stroke-width="1" />
+                                    <circle id="pupil-right" cx="238" cy="175" r="3" fill="#D4735A" />
                                     
                                     <!-- Nose Architecture -->
-                                    <polyline id="nose-bridge" points="200,160 200,240 185,250 200,255 215,250 200,240" fill="none" stroke="#00F0FF" stroke-width="1" />
+                                    <polyline id="nose-bridge" points="200,160 200,240 185,250 200,255 215,250 200,240" fill="none" stroke="#D4735A" stroke-width="1" />
 
                                     <!-- Mouth Geometry -->
-                                    <polygon id="mouth" points="160,285 200,275 240,285 200,295" fill="none" stroke="#FFFFFF" stroke-width="1" />
-                                    <line x1="160" y1="285" x2="240" y2="285" stroke="#00F0FF" stroke-width="1" />
+                                    <polygon id="mouth" points="160,285 200,275 240,285 200,295" fill="none" stroke="#F0E6DC" stroke-width="1" />
+                                    <line x1="160" y1="285" x2="240" y2="285" stroke="#D4A870" stroke-width="1" />
 
                                     <!-- Symmetrical Analysis Nodes -->
                                     <g id="analysis-nodes">
-                                        <circle cx="200" cy="240" r="4" class="node-pulse" fill="#00F0FF" data-name="코 중앙" />
-                                        <circle cx="200" cy="80" r="3.5" class="node-pulse" fill="#00F0FF" data-name="이마 끝" />
-                                        <circle cx="200" cy="340" r="3.5" class="node-pulse" fill="#00F0FF" data-name="턱 끝" />
-                                        <circle cx="162" cy="175" r="4" class="node-pulse" fill="#FFFFFF" data-name="왼쪽 눈동자" />
-                                        <circle cx="238" cy="175" r="4" class="node-pulse" fill="#FFFFFF" data-name="오른쪽 눈동자" />
-                                        <circle cx="130" cy="100" r="3" fill="#00F0FF" data-name="이마 왼쪽" />
-                                        <circle cx="270" cy="100" r="3" fill="#00F0FF" data-name="이마 오른쪽" />
-                                        <circle cx="70" cy="230" r="3.5" fill="#00F0FF" data-name="왼쪽 광대" />
-                                        <circle cx="330" cy="230" r="3.5" fill="#00F0FF" data-name="오른쪽 광대" />
-                                        <circle cx="160" cy="285" r="3" fill="#FFFFFF" data-name="입꼬리 왼쪽" />
-                                        <circle cx="240" cy="285" r="3" fill="#FFFFFF" data-name="입꼬리 오른쪽" />
+                                        <circle cx="200" cy="240" r="4" class="node-pulse" fill="#D4735A" data-name="코 중앙" />
+                                        <circle cx="200" cy="80" r="3.5" class="node-pulse" fill="#D4735A" data-name="이마 끝" />
+                                        <circle cx="200" cy="340" r="3.5" class="node-pulse" fill="#D4735A" data-name="턱 끝" />
+                                        <circle cx="162" cy="175" r="4" class="node-pulse" fill="#F0E6DC" data-name="왼쪽 눈동자" />
+                                        <circle cx="238" cy="175" r="4" class="node-pulse" fill="#F0E6DC" data-name="오른쪽 눈동자" />
+                                        <circle cx="130" cy="100" r="3" fill="#D4A870" data-name="이마 왼쪽" />
+                                        <circle cx="270" cy="100" r="3" fill="#D4A870" data-name="이마 오른쪽" />
+                                        <circle cx="70" cy="230" r="3.5" fill="#D4735A" data-name="왼쪽 광대" />
+                                        <circle cx="330" cy="230" r="3.5" fill="#D4735A" data-name="오른쪽 광대" />
+                                        <circle cx="160" cy="285" r="3" fill="#F0E6DC" data-name="입꼬리 왼쪽" />
+                                        <circle cx="240" cy="285" r="3" fill="#F0E6DC" data-name="입꼬리 오른쪽" />
                                     </g>
 
                                     <!-- Coordinate Annotation Lines -->
-                                    <g id="annotation-lines" stroke="#00F0FF" stroke-width="0.5" stroke-opacity="0.5">
+                                    <g id="annotation-lines" stroke="#D4735A" stroke-width="0.5" stroke-opacity="0.35">
                                         <line x1="162" y1="175" x2="238" y2="175" stroke-dasharray="2,2" />
                                         <line x1="130" y1="100" x2="270" y2="100" stroke-dasharray="2,2" />
                                         <line x1="70" y1="230" x2="330" y2="230" stroke-dasharray="2,2" />

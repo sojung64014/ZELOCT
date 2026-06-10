@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initDashboardTabs();
     initZeloctEngine();
     initActiveNavHighlight();
+    initVideoBanner();
 });
 
 /* ==========================================================================
@@ -491,4 +492,53 @@ function initActiveNavHighlight() {
             item.classList.add('active');
         }
     });
+}
+
+/* ==========================================================================
+   6. VIDEO BANNER INITIALIZER (Index Page Only)
+   ========================================================================== */
+function initVideoBanner() {
+    const video = document.getElementById('hero-video');
+    if (!video) return;
+
+    const SKIP_START = 1; // 앞에서 건너뛸 초
+
+    // When video can play, skip to 1s and fade in
+    const onVideoReady = () => {
+        video.currentTime = SKIP_START;
+        video.classList.add('loaded');
+    };
+
+    video.addEventListener('canplaythrough', onVideoReady, { once: true });
+    video.addEventListener('loadeddata', onVideoReady, { once: true });
+
+    // If video has already loaded (cached), apply immediately
+    if (video.readyState >= 3) {
+        onVideoReady();
+    }
+
+    // On loop: when video ends, jump back to SKIP_START instead of 0
+    video.removeAttribute('loop');
+    video.addEventListener('ended', () => {
+        video.currentTime = SKIP_START;
+        video.play();
+    });
+
+    // Also guard: if somehow currentTime goes below SKIP_START, correct it
+    video.addEventListener('timeupdate', () => {
+        if (video.currentTime < SKIP_START) {
+            video.currentTime = SKIP_START;
+        }
+    });
+
+    // Mute toggle button support (optional: add a button with id="video-mute-btn" to unmute)
+    const muteBtn = document.getElementById('video-mute-btn');
+    if (muteBtn) {
+        muteBtn.addEventListener('click', () => {
+            video.muted = !video.muted;
+            muteBtn.innerHTML = video.muted
+                ? '<i class="fa-solid fa-volume-xmark"></i>'
+                : '<i class="fa-solid fa-volume-high"></i>';
+        });
+    }
 }
